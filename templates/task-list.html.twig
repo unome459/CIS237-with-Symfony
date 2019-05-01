@@ -1,0 +1,11 @@
+{%  extends 'base.html.twig' %}
+
+{%  block body %}
+
+    <ul>
+        {% for produce_item in items %}
+            <li>  {{ produce_item.name }} {{ produce_item.image }} {{ produce_item.expirationDate|date('Y-m-d') }} </li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}
