@@ -26,3 +26,10 @@ Instructions for Symfony installation (using composer)
 ###Mockups
 
 https://app.moqups.com/5doE2dlSpv/edit/page/ad64222d5
+
+###Lab 8 Captures
+public/uploads/database create capture 237.PNG
+
+public/uploads/dump capture 237.PNG
+
+public/uploads/run capture 237.PNG
