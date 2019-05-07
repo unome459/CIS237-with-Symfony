@@ -11,7 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use App\Entity\ProduceItem;
 
-class TaskType extends AbstractType {
+class ItemType extends AbstractType {
 
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder

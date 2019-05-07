@@ -5,19 +5,19 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller as BaseController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\ProduceItem;
-use App\Form\TaskType;
+use App\Form\ItemType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class TaskController extends BaseController {
+class ItemController extends BaseController {
 
     /**
-     * @Route("/new-task", name="task")
+     * @Route("/new-item", name="item")
      */
     public function new(Request $request) {
-        $task = new ProduceItem("Enter a new Produce Item name", new \DateTime('today'), "");
+        $item = new ProduceItem("Enter a new Produce Item name", new \DateTime('today'), "");
 
-        $form = $this->createForm(TaskType::class, $task);
+        $form = $this->createForm(ItemType::class, $item);
 
         $form->handleRequest($request);
 
@@ -42,25 +42,25 @@ class TaskController extends BaseController {
         if ($form->isSubmitted()) {
 
             $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($task);
+            $entityManager->persist($item);
             $entityManager->flush();
 
-            return new Response('New item got added to the database ' . $task->getId());
+            return new Response('New item got added to the database ' . $item->getId());
         }
 
-        return $this->render('new-task.html.twig', ['task_form' => $form->createView()]);
+        return $this->render('new-item.html.twig', ['item_form' => $form->createView()]);
 
     }
 
     /**
-     * @Route("/list-task", name="task_list")
+     * @Route("/list-item", name="item_list")
      */
     public function list() {
         $repository = $this->getDoctrine()->getRepository(ProduceItem::class);
 
         $items = $repository->findAll();
 
-        return $this->render('task-list.html.twig', ['items' => $items]);
+        return $this->render('item-list.html.twig', ['items' => $items]);
     }
 
 }

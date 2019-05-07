@@ -1,0 +1,30 @@
+{%  extends 'base.html.twig' %}
+
+{%  block body %}
+
+    <div>
+        {{ form_start(item_form) }}
+
+        <div class="form-group">
+            {{ form_label(item_form.name) }}
+            {{ form_widget(item_form.name, {'attr': {'class' : 'form-control'} }) }}
+        </div>
+
+        <div class="form-group">
+            {{ form_label(item_form.expirationDate) }}
+            {{ form_widget(item_form.expirationDate, {'attr': {'class' : 'form-control'} }) }}
+        </div>
+
+        <div class="form-group">
+            {{ form_label(item_form.image) }}
+            {{ form_widget(item_form.image) }}
+        </div>
+
+        <div>
+            {{ form_widget(item_form.save, {'attr': {'class' : 'btn btn-primary'} }) }}
+        </div>
+
+        {{ form_end(item_form) }}
+    </div>
+
+{% endblock %}
