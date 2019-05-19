@@ -19,7 +19,9 @@ class Icon {
      * @ORM\Column(type="string", length=50)
      */
     private $name;
-
+    /**
+     * @ORM\Column(type="image")
+     */
     private $image;
 
     function __construct($name, $image) {

@@ -4,7 +4,6 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
-
 /**
  * @ORM\Entity
  */
@@ -25,7 +24,9 @@ class ProduceItem {
      */
     private $expirationDate;
     /**
-     * @ORM\Column(type="string")
+     * One ProduceItem has One Icon.
+     * @ORM\OneToOne(targetEntity="Icon")
+     * @ORM\JoinColumn(name="image", referencedColumnName="image")
      */
     private $image;
 
