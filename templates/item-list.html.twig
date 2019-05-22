@@ -4,8 +4,34 @@
 
     <ul>
         {% for produce_item in items %}
-            <li>  {{ produce_item.name }} {{ produce_item.image }} {{ produce_item.expirationDate|date('Y-m-d') }} </li>
+            <li id="{{ produce_item.id }}-list-item">  {{ produce_item.name }} {{ produce_item.image }} {{ produce_item.expirationDate|date('Y-m-d') }}
+                <span data-url={{ path('delete_item', { id: produce_item.id }) }} id="{{ produce_item.id }}">
+                    <i class="fas fa-trash-alt text-danger"></i>
+                </span>
+            </li>
         {% endfor %}
     </ul>
 
+    <a href="{{ path("students_download") }}" class="btn btn-info mt-5">
+        <i class="fas fa-download"></i>
+    </a>
+
+{% endblock %}
+
+{% block javascripts %}
+{{ parent() }}
+    <script>
+        $(document).ready(function() {
+            $('ul li span').click(function(e) {
+                let produce_item_id = $(this).attr('id');
+
+                $.ajax({
+                    url: $(this).data('url'),
+                    method: 'DELETE'
+                }).done(function() {
+                    $('#'+produce_item_id+'-list-item').hide();
+                });
+            })
+        });
+    </script>
 {% endblock %}

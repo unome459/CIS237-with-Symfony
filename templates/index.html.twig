@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit item{% endblock %}
+
+{%  block body %}
+
+    <div>
+        {{ form_start(item_form) }}
+
+        <div class="form-group">
+            {{ form_label(item_form.name) }}
+            {{ form_widget(item_form.name, {'attr': {'class' : 'form-control'} }) }}
+        </div>
+
+        <div class="form-group">
+            {{ form_label(item_form.expirationDate) }}
+            {{ form_widget(item_form.expirationDate, {'attr': {'class' : 'form-control'} }) }}
+        </div>
+
+        <div class="form-group">
+            {{ form_label(item_form.image) }}
+            {{ form_widget(item_form.image) }}
+        </div>
+
+        <div>
+            {{ form_widget(item_form.save, {'attr': {'class' : 'btn btn-primary'}, 'label': label }) }}
+        </div>
+
+        <div>
+            <a href="new-icon">Enter a new Icon Here</a>
+        </div>
+
+        {{ form_end(item_form) }}
+    </div>
+
+    <div class="mt-5">
+        <button data-url="{{ path('ajax_edit_produce_item', {id: app.request.attributes.get('id') }) }}" class="btn btn-secondary" id="ajax-update">
+            Update with ajax
+        </button>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+{{ parent() }}
+    <script>
+        $(document).ready(function() {
+            $('#ajax-update').click(function(e) {
+                let name = $('#produce_item_name').val();
+                let expiration_date = $('#produce_item_expiration_date').val();
+                let image = $('#produce_item_image').val();
+
+                $.ajax({
+                    url: $(this).data('url'),
+                    method: 'PUT',
+                    data: {Name: name, expirationDate: expiration_date, Image: image}
+                }).done(function () {
+                    $('#alert-div').html('div class="alert alert-success p-5">Success!</div>');
+                })
+            });
+        });
+    </script>
+{% endblock %}
