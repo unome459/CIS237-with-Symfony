@@ -10,34 +10,34 @@ use App\Repository\ItemRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class ItemController extends BaseController {
+class ShoppingListController extends BaseController {
 
     /**
-     * @Route("/new-item-fridge", name="item_fridge")
+     * @Route("/new-item-shopping", name="item_shopping")
      */
     public function new(Request $request) {
-        $item = new ProduceItem("Enter a new Produce Item name", new \DateTime('today'), "", "");
+        $item = new ProduceItem("Enter a new Produce Item name", "", "", "");
 
         $form = $this->createForm(ItemType::class, $item);
 
         $form->handleRequest($request);
 
         /**  if($form->isSubmitted()) {
-                $imageFile = $task->getImage();
+        $imageFile = $task->getImage();
 
-                $fileName = md5(uniqid()) . '.' . $imageFile->guessExtension();
+        $fileName = md5(uniqid()) . '.' . $imageFile->guessExtension();
 
-                $rootDirPath = $this->get('kernel')->getRootDir() . '/../public/uploads';
+        $rootDirPath = $this->get('kernel')->getRootDir() . '/../public/uploads';
 
-                $imageFile->move($rootDirPath, $fileName);
+        $imageFile->move($rootDirPath, $fileName);
 
-                $task->setImage($fileName);
+        $task->setImage($fileName);
 
-                $task = $form->getData();
-                return new Response(
-                    '<html><body>New item was added: ' . $task->getName() . ' expires on ' . $task->getExpirationDate()->format('Y-m-d') .
-                    ' Hashed file name: ' . $task->getImage() . '<img src="/uploads/' . $task->getImage() . '"/></body></html>'
-                );
+        $task = $form->getData();
+        return new Response(
+        '<html><body>New item was added: ' . $task->getName() . ' expires on ' . $task->getExpirationDate()->format('Y-m-d') .
+        ' Hashed file name: ' . $task->getImage() . '<img src="/uploads/' . $task->getImage() . '"/></body></html>'
+        );
         } **/
 
         if ($form->isSubmitted()) {
@@ -54,7 +54,7 @@ class ItemController extends BaseController {
     }
 
     /**
-     * @Route("/fridge-list-item", name="item_list_fridge")
+     * @Route("/shopping-list-item", name="item_list_shopping")
      */
     public function list(Request $request) {
         $repository = $this->getDoctrine()->getRepository(ProduceItem::class);

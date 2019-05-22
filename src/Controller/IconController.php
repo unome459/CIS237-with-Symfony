@@ -68,3 +68,4 @@ class IconController extends BaseController
     }
 
 }
+?>

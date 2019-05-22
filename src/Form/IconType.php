@@ -23,3 +23,4 @@ class IconType extends AbstractType {
         $resolver->setDefaults(['data_class' => Icon::class]);
     }
 }
+?>

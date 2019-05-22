@@ -29,11 +29,16 @@ class ProduceItem {
      * @ORM\JoinColumn(name="image", referencedColumnName="image")
      */
     private $image;
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $in_shopping_list;
 
-    function __construct($name, $expirationDate, $image) {
+    function __construct($name, $expirationDate, $image, $in_shopping_list) {
         $this->name = $name;
         $this->expirationDate = $expirationDate;
         $this->image = $image;
+        $this->in_shopping_list = $in_shopping_list;
     }
 
     public function getId() {
@@ -62,6 +67,14 @@ class ProduceItem {
 
     public function setImage($image) {
         $this->image = $image;
+    }
+
+    public function getInShoppingList() {
+        return $this->in_shopping_list;
+    }
+
+    public function setInShoppingList($in_shopping_list) {
+        $this->in_shopping_list = $in_shopping_list;
     }
 
 }

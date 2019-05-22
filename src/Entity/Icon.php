@@ -20,7 +20,7 @@ class Icon {
      */
     private $name;
     /**
-     * @ORM\Column(type="image")
+     * @ORM\Column
      */
     private $image;
 

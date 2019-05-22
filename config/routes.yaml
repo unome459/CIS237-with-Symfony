@@ -4,4 +4,7 @@
 
 #app_lucky_number:
 #  path: /lucky/number
-#  controller: App\Controller\LuckyController::number
+#  controller: App\Controller\LuckyController::
+
+fos_user:
+  resource: "@FOSUserBundle/Resources/config/routing/all.xml"

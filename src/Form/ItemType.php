@@ -25,3 +25,4 @@ class ItemType extends AbstractType {
         $resolver->setDefaults(['data_class' => ProduceItem::class]);
     }
 }
+?>
